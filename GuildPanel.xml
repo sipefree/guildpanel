@@ -1,0 +1,5735 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Include file="GuildPanel_DatavView.xml"/>
+	<Font name="GuildPanelFontNormal" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GuildPanelFontWhite" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<Font name="GuildPanelFontSmall" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="10"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GuildPanelFontSmallWhite" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="10"/>
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<Font name="GuildPanelFontTiny" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="8"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GuildPanelFontTinyWhite" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="8"/>
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<Font name="GuildPanelFontBold" font="Interface\AddOns\GuildPanel\MYRIADPB.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GuildPanelFontBoldCond" font="Interface\AddOns\GuildPanel\MYRIAPBC.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GuildPanelOverlayFontNormal" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	<Font name="GuildPanelFontLarge" font="Interface\AddOns\GuildPanel\MYRIADPR.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="16"/>
+		</FontHeight>
+		<Color r="0.2" g="0.2" b="0.2"/>
+	</Font>
+	<Font name="GuildPanelOverlayTitleFont" font="Interface\AddOns\GuildPanel\MYRIAPBC.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="18"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="0.9"/>
+	</Font>
+	<Font name="GuildPanelFontGuildName" font="Interface\AddOns\GuildPanel\BLKCHCRY.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="16"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Frame name="GuildPanelBlurredWindow" parent="UIParent" alpha="1.0" movable="true" enableMouse="true" toplevel="true" frameLevel="1" resizable="false">
+		<Size>
+			<AbsDimension x="512" y="512" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="FriendsFrame">
+				<Offset>
+					<RelDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\GuildPanel\default-noguild" tile="false">
+			<EdgeSize>
+				<AbsValue val="0"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="512"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>
+	</Frame>
+	<Frame name="GuildPanelWindow" parent="UIParent" alpha="1.0" movable="true" enableMouse="true" toplevel="true" frameLevel="1" resizable="false">
+		<Size>
+			<AbsDimension x="512" y="512" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<RelDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\GuildPanel\default" tile="false">
+			<EdgeSize>
+				<AbsValue val="0"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="512"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentPlayerRank" inherits="GuildPanelFontNormal" text="Member of" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-5"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="110" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentMOTDTitle" inherits="GuildPanelFontSmall" text="Message of the Day:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="305" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.25" g="0.25" b="0.25" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString inherits="GuildPanelFontSmall" text="Choose a view:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-65"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentInviteButtonLabel" inherits="GuildPanelFontSmall" text="Invite" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="112" y="-65"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentMOTDButtonLabel" inherits="GuildPanelFontSmall" text="MOTD" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="151" y="-65"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString inherits="GuildPanelFontSmall" text="Info" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="192" y="-65"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentResultsText" inherits="GuildPanelFontSmall" text="" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="140" y="70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.0" g="0.0" b="0.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.8" g="0.8" b="0.8"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentMOTD" inherits="GuildPanelFontSmall" text="" enableMouse="false" alpha="1.0" justifyH="left" justifyV="top">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Size><AbsDimension x="175" y="100"/></Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="305" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+				
+				<FontString name="$parentGuildName" inherits="GuildPanelFontGuildName" text="&lt;ABCDEFGHIJKLMNOPQRSTUVWX&gt;" enableMouse="false" alpha="1.0" justifyH="left" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-18"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="100" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentSearchBG" file="Interface\AddOns\GuildPanel\searchBG">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-20" y="-49" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentEmblemBackgroundUL">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="15" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBackgroundUR">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBackgroundUL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBackgroundBL">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentEmblemBackgroundUL" relativePoint="BOTTOM">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBackgroundBR">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBackgroundBL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+			</Layer>
+			<Layer name="ARTWORK">
+				<Texture name="$parentEmblemBorderUL">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentEmblemBackgroundUL">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBorderUR">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBorderUL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBorderBL">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentEmblemBorderUL" relativePoint="BOTTOM">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBorderBR">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBorderBL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemUL">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentEmblemBackgroundUL">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemUR">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBorderUL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBL">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentEmblemUL" relativePoint="BOTTOM">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentEmblemBR">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEmblemBL" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+
+			</Layer>
+			<Layer name="OVERLAY">
+				<Texture file="Interface\AddOns\GuildPanel\guildTabardBorder">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentEmblemBackgroundUL" relativePoint="LEFT">
+							<Offset x="-10" y="29"/>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<!--<TabardModel name="$parentTabardModel" alpha="0.0">
+                <Size>
+                    <AbsDimension x="1" y="1"/>
+                </Size>
+            </TabardModel>-->
+			
+			<Button name="$parentInviteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="110" y="-35" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\inviteButtonNorm" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\inviteButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>GuildPanel:OnInviteButtonClick()</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentMOTDButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="150" y="-35" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\motdButtonNorm" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\motdButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>GuildPanel:ShowPromptToSetMOTD()</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentInfoButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="186" y="-35" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\infoButtonNorm" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\infoButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>GuildPanel:OnInfoButtonClick()</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="$parentHelpArrow" alpha="0.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="32" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-230" y="-30" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture file="Interface\AddOns\GuildPanel\helpArrow">
+							<Size>
+								<AbsDimension x="32" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-32" y="6" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\close" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture />
+				<PushedTexture file="Interface\AddOns\GuildPanel\close-clicked" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:HideWindow()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentToggleOfflineButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Size>
+					<AbsDimension x="90" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-150" y="-55" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Show Offline" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\regularButton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\regularButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:ToggleShowOffline()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parentSearchBox" multiLine="false" autoFocus="false">
+				<Size>
+					<AbsDimension x="110" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="-50" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+
+					</Layer>
+					<Layer level="ARTWORK">
+
+					</Layer>
+				</Layers>
+				<Frames />
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+					</OnMouseUp>
+					<OnEscapePressed>
+						this:ClearFocus();
+					</OnEscapePressed>
+					<OnEnterPressed>
+						GuildPanel:SetDataFilter(this:GetText())
+						this:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+				<FontString inherits="GuildPanelFontSmall"/>
+			</EditBox>
+			<Button name="$parentResetSearch" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="1" y="-50" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\close" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="10" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture />
+				<PushedTexture file="Interface\AddOns\GuildPanel\close-clicked" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="10" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanelWindowSearchBox:SetText("")
+						GuildPanelWindowSearchBox:ClearFocus()
+						GuildPanel:SetDataFilter("")
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Frame name="$parentPrompt" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameStrata="TOOLTIP" resizable="false">
+				<Size>
+					<AbsDimension x="200" y="70" />
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="0" y="50" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\AddOns\GuildPanel\PopupMenu\menuBG" edgeFile="Interface\AddOns\GuildPanel\PopupMenu\menuEgde" tile="false">
+					<EdgeSize>
+						<AbsValue val="1"/>
+					</EdgeSize>
+					<BackgroundInsets>
+						<AbsInset left="1" right="1" top="1" bottom="1"/>
+					</BackgroundInsets>
+				  </Backdrop>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture>
+							<Size>
+								<AbsDimension x="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.5" g="0.5" b="0.5" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension x="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.5" g="0.5" b="0.5" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension y="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.5" g="0.5" b="0.5" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension y="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.5" g="0.5" b="0.5" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentTitle" inherits="GuildPanelFontBoldCond" text="Enter a Character Name" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="200" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:SetDrawMode("STD")
+					</OnMouseUp>
+				</Scripts>
+				<Frames>
+					<EditBox name="$parentEditBox" multiLine="false" autoFocus="false">
+						<Size>
+							<AbsDimension x="170" y="16"/>
+						</Size>
+						<Anchors>
+							<Anchor point="CENTER" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="0" y="3" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture>
+									<Size>
+										<AbsDimension x="170" y="16" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="1.0" g="1.0" b="1.0" />
+								</Texture>
+							</Layer>
+							<Layer name="ARTWORK">
+								<Texture>
+									<Size>
+										<AbsDimension x="1" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.7" g="0.7" b="0.7" />
+								</Texture>
+								<Texture>
+									<Size>
+										<AbsDimension x="1" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+										<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.7" g="0.7" b="0.7" />
+								</Texture>
+								<Texture>
+									<Size>
+										<AbsDimension y="1" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+										<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.7" g="0.7" b="0.7" />
+								</Texture>
+								<Texture>
+									<Size>
+										<AbsDimension y="1" />
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+										<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.7" g="0.7" b="0.7" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Frames />
+						<Scripts>
+							<OnMouseUp>
+								GuildPanel:CloseAllPopupMenus()
+							</OnMouseUp>
+							<OnEscapePressed>
+								this:ClearFocus();
+							</OnEscapePressed>
+							<OnEnterPressed>
+								this:ClearFocus();
+							</OnEnterPressed>
+						</Scripts>
+						<FontString inherits="GuildPanelFontSmall"/>
+					</EditBox>
+					<Button name="$parentOkayButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+						<Size>
+							<AbsDimension x="90" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="-90" y="5" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Okay" enableMouse="false" alpha="1.0">
+									<Size>
+										<AbsDimension x="128" />
+									</Size>
+									<FontHeight>
+										<AbsValue val="15"/>
+									</FontHeight>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="-1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0" g="0" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="0" y="-1"/>
+										</Offset>
+										<Color r="0.5" g="0.5" b="0.5"/>
+									</Shadow>
+								</FontString>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\AddOns\GuildPanel\regularButton" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture file="" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture file="Interface\AddOns\GuildPanel\regularButtonPushed" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnClick>
+								GuildPanel:CloseAllPopupMenus()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentCancel" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+						<Size>
+							<AbsDimension x="90" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="90" y="5" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Cancel" enableMouse="false" alpha="1.0">
+									<Size>
+										<AbsDimension x="128" />
+									</Size>
+									<FontHeight>
+										<AbsValue val="15"/>
+									</FontHeight>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="-1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0" g="0" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="0" y="-1"/>
+										</Offset>
+										<Color r="0.5" g="0.5" b="0.5"/>
+									</Shadow>
+								</FontString>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\AddOns\GuildPanel\regularButton" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture file="" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture file="Interface\AddOns\GuildPanel\regularButtonPushed" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnClick>
+								self:GetParent():Hide()
+								GuildPanel:CloseAllPopupMenus()
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			
+			<Frame name="$parentStandardModeSelect" alpha="1.0" visible="true" movable="false" enableMouse="true" frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="125" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="5" y="-90" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="125" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentText" inherits="GuildPanelFontLarge" text="All Characters" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:SetDrawMode("STD")
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentAltMainModeSelect" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="125" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="5" y="-115" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="125" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentText" inherits="GuildPanelFontLarge" text="Alt/Main List" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:SetDrawMode("ALTMAIN")
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentAdvSearchModeSelect" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="125" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="5" y="-140" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="125" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentText" inherits="GuildPanelFontLarge" text="Search" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:SetDrawMode("SEARCH")
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentVoteModeSelect" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="125" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="5" y="-165" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="125" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentText" inherits="GuildPanelFontLarge" text="Messages" enableMouse="false" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="0.3" />
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						--GuildPanel:CloseAllPopupMenus()
+						--GuildPanel:SetDrawMode("VOTING")
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentManageModeSelect" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="125" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="5" y="-190" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="125" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.0" g="0.0" b="0.0" a="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="OVERLAY">
+						<FontString name="$parentText" inherits="GuildPanelFontLarge" text="Manage" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						GuildPanel:SetDrawMode("MANAGE")
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentContentRect" alpha="1.0" visible="true" movable="false" enableMouse="true"  frameLevel="2" resizable="false">
+				<Size>
+					<AbsDimension x="376" y="346" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="130" y="-77" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<!--<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="false" alphaMode="BLEND">
+					<EdgeSize>
+						<AbsValue val="0"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="512"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="0" bottom="0"/>
+					</BackgroundInsets>
+				</Backdrop>-->
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			
+			
+			<Button name="$parentFriendsTab" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="10" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontTiny" text="F" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</DisabledTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel.isSelectedSocialTab = false
+						GuildPanel:HideWindow()
+						FriendsFrame:Show()
+						PanelTemplates_SetTab(FriendsFrame, 1)
+						FriendsFrame_Update()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentWhoTab" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="26" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontTiny" text="W" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</DisabledTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel.isSelectedSocialTab = false
+						GuildPanel:HideWindow()
+						FriendsFrame:Show()
+						PanelTemplates_SetTab(FriendsFrame, 2)
+						FriendsFrame_Update()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentGuildTab" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="42" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontTinyWhite" text="G" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</DisabledTexture>
+				<Scripts>
+					<OnClick>
+
+					</OnClick>
+					<OnLoad>
+						self:Disable()
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="$parentChatTab" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="58" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontTiny" text="C" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</DisabledTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel.isSelectedSocialTab = false
+						GuildPanel:HideWindow()
+						FriendsFrame:Show()
+						PanelTemplates_SetTab(FriendsFrame, 4)
+						FriendsFrame_Update()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentRaidTab" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="74" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontTiny" text="R" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</DisabledTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel.isSelectedSocialTab = false
+						GuildPanel:HideWindow()
+						FriendsFrame:Show()
+						PanelTemplates_SetTab(FriendsFrame, 5)
+						FriendsFrame_Update()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			
+			
+			<Frame name="$parentPanelOverlay" alpha="0.95" movable="true" enableMouse="true" toplevel="true" frameLevel="1" resizable="false">
+				<Size>
+					<AbsDimension x="512" y="256" />
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<RelDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\AddOns\GuildPanel\panelOverlayBackground" tile="false" alphaMode="BLEND">
+					<EdgeSize>
+						<AbsValue val="0"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="512"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="0" bottom="0"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentTitle" inherits="GuildPanelOverlayTitleFont" text="Guild Information" enableMouse="false" alpha="1.0">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="65" y="-18"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GuildPanelImporterDetailsText" inherits="GuildPanelFontWhite" text="" enableMouse="false" alpha="1.0" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="65" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Frame name="GuildPanelInformationScrollBG">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-69.8" y="-56" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Size>
+							<AbsDimension x="16" y="138" />
+						</Size>
+						<Backdrop bgFile="Interface\AddOns\GuildPanel\Scroller\trackmiddle" tile="true">
+							<TileSize>
+								<AbsValue val="16"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="0" right="0" top="16" bottom="16"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentBGTop" file="Interface\AddOns\GuildPanel\Scroller\tracktop" alphaMode="BLEND">
+									<Size>
+										<AbsDimension x="16" y="16" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<Texture name="$parentBGBottom" file="Interface\AddOns\GuildPanel\Scroller\trackbottom" alphaMode="BLEND">
+									<Size>
+										<AbsDimension x="16" y="16" />
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+							</Layer>
+						</Layers>
+					</Frame>
+					<ScrollFrame name="GuildPanelInformationScrollBar">
+						<Size>
+							<AbsDimension y="170" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="70" y="-40" />
+								</Offset>
+							</Anchor>
+							<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="-92" y="-10" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								local scrollbar = getglobal(self:GetName().."ScrollBar");
+						        scrollbar:SetValue(offset);
+						        local min;
+						        local max;
+						        min, max = scrollbar:GetMinMaxValues();
+						        if ( offset == 0 ) then
+						          getglobal(scrollbar:GetName().."ScrollUpButton"):Disable();
+						        else
+						          getglobal(scrollbar:GetName().."ScrollUpButton"):Enable();
+						        end
+						        if ((scrollbar:GetValue() - max) == 0) then
+						          getglobal(scrollbar:GetName().."ScrollDownButton"):Disable();
+						        else
+						          getglobal(scrollbar:GetName().."ScrollDownButton"):Enable();
+						        end
+								GuildPanelInformationScrollBar_OnVerticalScroll()
+							</OnVerticalScroll>
+							<OnScrollRangeChanged>
+								GuildPanelInformationScrollBar_OnScrollRangeChanged(self, arg2, getglobal("GuildPanelInformationScrollBG"));
+								getglobal(self:GetName().."ScrollBarScrollDownButton"):Hide()
+								getglobal(self:GetName().."ScrollBarScrollUpButton"):Hide()
+							</OnScrollRangeChanged>
+							<OnMouseWheel>
+								GuildPanelScrollFrame_OnMouseWheel(self, delta);
+							</OnMouseWheel>
+						</Scripts>
+						<Frames>
+							<Slider name="$parentScrollBar">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+										<Offset>
+											<AbsDimension x="6" y="-16"/>
+										</Offset>
+									</Anchor>
+									<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+										<Offset>
+											<AbsDimension x="6" y="16"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Size>
+									<AbsDimension x="16" y="0"/>
+								</Size>
+								<Frames>
+									<Button name="$parentScrollUpButton">
+										<Anchors>
+											<Anchor point="BOTTOM" relativePoint="TOP"/>
+										</Anchors>
+									</Button>
+									<Button name="$parentScrollDownButton">
+										<Anchors>
+											<Anchor point="TOP" relativePoint="BOTTOM"/>
+										</Anchors>
+										<Scripts>
+										</Scripts>
+									</Button>
+								</Frames>
+								<Scripts>
+									<OnValueChanged>
+										this:GetParent():SetVerticalScroll(arg1);
+									</OnValueChanged>
+								</Scripts>
+								<ThumbTexture name="$parentThumbTexture" file="Interface\Addons\GuildPanel\Scroller\thumb">
+									<Size>
+										<AbsDimension x="16" y="32"/>
+									</Size>
+								</ThumbTexture>
+							</Slider>
+						</Frames>
+						<ScrollChild>
+							<EditBox name="$parentInfoBox" multiLine="true" autoFocus="false">
+								<Size>
+									<AbsDimension x="300" y="50"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOP">
+										<Offset>
+											<AbsDimension x="16" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="BACKGROUND">
+
+									</Layer>
+									<Layer level="ARTWORK">
+
+									</Layer>
+								</Layers>
+								<Frames />
+								<Scripts>
+									<OnUpdate>
+										self:SetWidth(self:GetParent():GetWidth())
+										self:SetHeight(self:GetParent():GetHeight())
+									</OnUpdate>
+									<OnEscapePressed>
+										this:ClearFocus();
+									</OnEscapePressed>
+									<OnTextChanged>
+										local scrollBar = getglobal(this:GetParent():GetName().."ScrollBar")
+										local min;
+										local max;
+										min, max = scrollBar:GetMinMaxValues();
+										if ( max > 0 and (this.max ~= max) ) then
+											this.max = max;
+											scrollBar:SetValue(max);
+										end
+									</OnTextChanged>
+								</Scripts>
+								<FontString inherits="GuildPanelFontWhite"/>
+							</EditBox>
+						</ScrollChild>
+					</ScrollFrame>
+					
+					<Button name="$parentInformationCloseButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+						<Size>
+							<AbsDimension x="90" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="60" y="23" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<FontString inherits="GuildPanelFontSmall" text="Close" enableMouse="false" alpha="1.0">
+									<Size>
+										<AbsDimension x="128" />
+									</Size>
+									<FontHeight>
+										<AbsValue val="15"/>
+									</FontHeight>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0" g="0" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="0" y="-1"/>
+										</Offset>
+										<Color r="0.5" g="0.5" b="0.5"/>
+									</Shadow>
+								</FontString>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture file="" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnClick>GuildPanel:OnInfoButtonClick()</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentInformationSaveButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+						<Size>
+							<AbsDimension x="90" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="150" y="23" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<FontString inherits="GuildPanelFontSmall" text="Save" enableMouse="false" alpha="1.0">
+									<Size>
+										<AbsDimension x="128" />
+									</Size>
+									<FontHeight>
+										<AbsValue val="15"/>
+									</FontHeight>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0" g="0" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="0" y="-1"/>
+										</Offset>
+										<Color r="0.5" g="0.5" b="0.5"/>
+									</Shadow>
+								</FontString>
+								
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture file="" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnClick>GuildPanel:SaveGuildInformation()</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GuildPanelImporterButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+						<Size>
+							<AbsDimension x="90" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="60" y="23" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Scan" enableMouse="false" alpha="1.0">
+									<Size>
+										<AbsDimension x="128" />
+									</Size>
+									<FontHeight>
+										<AbsValue val="15"/>
+									</FontHeight>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0" g="0" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="0" y="-1"/>
+										</Offset>
+										<Color r="0.5" g="0.5" b="0.5"/>
+									</Shadow>
+								</FontString>
+								
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture file="" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="128" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnClick>GuildPanel:Importer()</OnClick>
+						</Scripts>
+					</Button>
+					<StatusBar name="GuildPanelImporterStatusbar" inherits="TextStatusBar" minValue="0.0" maxValue="1.0" defaultValue="0.2" drawLayer="ARTWORK">
+						
+						<Size x="280" y="5"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativepoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="140" y="-30"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<BarTexture>
+							<Color r="1.0" g="1.0" b="1.0" a="0.75" />
+						</BarTexture>
+						<Layers>
+							<Layer name="BACKGROUND">
+								<Texture>
+									<Size>
+										<AbsDimension x="280" y="5" />
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+											<Offset>
+												<AbsDimension x="0" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.1" g="0.1" b="0.1" a="0.75" />
+								</Texture>
+							</Layer>
+							<Layer name="ARTWORK">
+								<FontString name="GuildPanelImporterStateText" inherits="GuildPanelFontSmallWhite" text="Step 1: Lol" enableMouse="false" alpha="1.0">
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+											<Offset>
+												<AbsDimension x="0" y="1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</StatusBar>
+					
+					
+				</Frames>
+			</Frame>
+
+		</Frames>
+		<Scripts>
+			<OnUpdate>
+               GuildPanel:OnUpdate(elapsed);
+            </OnUpdate>
+			<OnMouseDown>
+				self:StartMoving();
+				GuildPanel:CloseAllPopupMenus()
+				GuildPanelWindowSearchBox:ClearFocus()
+			</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing();
+			</OnMouseUp>
+			<OnEscapePressed>
+				message('boo')
+			</OnEscapePressed>
+		</Scripts>
+	</Frame>
+	
+	
+	
+	
+	
+	<!--
+	
+	GuildPanel_DataView	
+		
+	-->
+	<Frame name="GuildPanelDataView" virtual="true">
+		<Size>
+			<AbsDimension x="376" y="346" />
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+
+			</Layer>
+		</Layers>
+		
+		<Frames>
+			<Button name="$parentNameSortButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="90" y="20" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString inherits="GuildPanelFontSmall" text="Name" enableMouse="false" alpha="1.0" justifyH="left">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture />
+				<HighlightTexture />
+				<PushedTexture />
+				<Scripts>
+					<OnClick>
+						SortGuildRoster("name");
+						GuildPanel:DrawDataView()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentZoneSortButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="126" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="90" y="20" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString inherits="GuildPanelFontSmall" text="Zone" enableMouse="false" alpha="1.0" justifyH="left">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture />
+				<HighlightTexture />
+				<PushedTexture />
+				<Scripts>
+					<OnClick>
+						SortGuildRoster("zone");
+						GuildPanel:DrawDataView()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentClassSortButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="275" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="80" y="20" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString inherits="GuildPanelFontSmall" text="Class" enableMouse="false" alpha="1.0" justifyH="left">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture />
+				<HighlightTexture />
+				<PushedTexture />
+				<Scripts>
+					<OnClick>
+						SortGuildRoster("class");
+						GuildPanel:DrawDataView()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentLevelSortButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="259" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="20" />
+				</Size>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString inherits="GuildPanelFontSmall" text="L" enableMouse="false" alpha="1.0" justifyH="left">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture />
+				<HighlightTexture />
+				<PushedTexture />
+				<Scripts>
+					<OnClick>
+						SortGuildRoster("level");
+						GuildPanel:DrawDataView()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="$parentScrollBG">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="-36" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="268" />
+				</Size>
+				<Backdrop bgFile="Interface\AddOns\GuildPanel\Scroller\blue-trackmiddle" tile="true">
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="16" bottom="16"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBGTop" file="Interface\AddOns\GuildPanel\Scroller\blue-tracktop" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentBGBottom" file="Interface\AddOns\GuildPanel\Scroller\blue-trackbottom" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<ScrollFrame name="$parentScrollBar" inherits="GuildPanelDataViewScrollBar">
+				
+			</ScrollFrame>
+			<Frame name="$parentLowerFrame" inherits="GuildPanelDataViewLowerFrame">
+				
+			</Frame>
+		</Frames>
+	</Frame>
+	
+	<Button name="GuildPanelPlusButton" inherits="UIPanelCloseButton" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<NormalTexture file="Interface\AddOns\GuildPanel\plus" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<PushedTexture file="Interface\AddOns\GuildPanel\plusPushed" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+	</Button>
+	<Button name="GuildPanelMinusButton" inherits="UIPanelCloseButton" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<NormalTexture file="Interface\AddOns\GuildPanel\minus" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<PushedTexture file="Interface\AddOns\GuildPanel\minusPushed" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+	</Button>
+	<Button name="GuildPanelLongButton" inherits="UIPanelCloseButton" virtual="true">
+		<Size>
+			<AbsDimension x="256" y="16" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="128" y="-70" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer name="BACKGROUND">
+				<FontString name="$parentText" inherits="GuildPanelFontSmall" text="" enableMouse="false" alpha="1.0">
+					<Size>
+						<AbsDimension x="256" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<NormalTexture file="Interface\AddOns\GuildPanel\longButton" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="256" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="256" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<PushedTexture file="Interface\AddOns\GuildPanel\longButtonPushed" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="256" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+	</Button>
+	<Button name="GuildPanelCircularButton" inherits="UIPanelCloseButton" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<Layers>
+			<Layer name="BACKGROUND">
+				<FontString name="$parentText" inherits="GuildPanelFontTiny" text="F" enableMouse="false" alpha="1.0">
+					<Size>
+						<AbsDimension x="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<NormalTexture file="Interface\AddOns\GuildPanel\circularbutton" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<PushedTexture file="Interface\AddOns\GuildPanel\circularbutton-pressed" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+		<DisabledTexture file="Interface\AddOns\GuildPanel\circularbutton-disabled" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</DisabledTexture>
+	</Button>
+	
+	<Frame name="GuildPanelDataView_ListItem" virtual="true">
+		<Size>
+			<AbsDimension x="355" y="16" />
+		</Size>
+		<Backdrop bgFile="Interface\Addons\GuildPanel\dataViewListBG1" tile="false" alphaMode="BLEND">
+			<EdgeSize>
+				<AbsValue val="0"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer name="ARTWORK">
+				<Texture name="$parentMarked" file="Interface\AddOns\GuildPanel\marked" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentNameText" inherits="GuildPanelFontBold" text="" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentClassText" inherits="GuildPanelFontSmall" text="Death Knight" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="275" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentLevelText" inherits="GuildPanelFontSmall" text="80" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="259" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentZoneText" inherits="GuildPanelFontSmall" text="" enableMouse="false" alpha="1.0" justifyH="left" justifyV="TOP">
+					<Size>
+						<AbsDimension x="133" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="126" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0" g="0" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				<Texture name="$parentOnoff" file="Interface\AddOns\GuildPanel\online" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="110" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentL" file="Interface\AddOns\GuildPanel\L" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="8" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnMouseUp>
+				GuildPanel:OnListCellClicked(self, button)
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="GuildPanelDataView_Details" virtual="true">
+		<Size>
+			<AbsDimension x="356" y="110" />
+		</Size>
+		<Layers>
+			<Layer name="BACKGROUND">
+				<Texture file="Interface\Addons\GuildPanel\dataViewDetailsBG" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="356" y="110" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer name="ARTWORK">
+				<FontString name="$parentLevelClassText" inherits="GuildPanelFontNormal" text="Info" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString inherits="GuildPanelFontSmall" text="Zone:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-33"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.8" g="0.8" b="0.8" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentZoneText" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="MIDDLE">
+					<Size>
+						<AbsDimension x="160" y="12" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-45"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString inherits="GuildPanelFontSmall" text="Rank:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-59"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.8" g="0.8" b="0.8" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentRankText" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="MIDDLE">
+					<Size>
+						<AbsDimension x="160" y="12" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString inherits="GuildPanelFontSmall" text="Last Online:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-85"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.8" g="0.8" b="0.8" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentLastOnlineText" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="MIDDLE">
+					<Size>
+						<AbsDimension x="160" y="12" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-95"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				
+				<FontString inherits="GuildPanelFontSmall" text="Public Note:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="178" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.8" g="0.8" b="0.8" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentPublicNote" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension x="160" y="50" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="180" y="-20"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				
+				<FontString name="$parentOfficerNote" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension x="160" y="50" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="180" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentOfficerNoteLabel" inherits="GuildPanelFontSmall" text="Officer Note:" enableMouse="false" alpha="1.0">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="178" y="-50"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.8" g="0.8" b="0.8" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+				<FontString name="$parentLastOnlineText" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyH="LEFT" justifyV="MIDDLE">
+					<Size>
+						<AbsDimension x="160" y="12" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-110"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.1" g="0.1" b="0.1"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentEditPublicNoteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0" enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="154" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture />
+				<PushedTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.2" g="0.2" b="0.2" a="0.7" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:ShowPromptToSetPublicNote()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentEditOfficerNoteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0" enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="154" y="-40" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture />
+				<PushedTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.2" g="0.2" b="0.2" a="0.7" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:ShowPromptToSetOfficerNote()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="$parentAltOptionsPopupButton" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="150" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="178" y="-90"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnMouseUp>
+				GuildPanel:CloseAllPopupMenus()
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="GuildPanelPopupMenu" virtual="true">
+		<Size>
+			<AbsDimension x="64" y="128" />
+		</Size>
+		<Backdrop bgFile="Interface\AddOns\GuildPanel\PopupMenu\menuBG" edgeFile="Interface\AddOns\GuildPanel\PopupMenu\menuEgde" tile="false">
+			<EdgeSize>
+				<AbsValue val="1"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="1" right="1" top="1" bottom="1"/>
+			</BackgroundInsets>
+		  </Backdrop>
+		<Layers>
+			<Layer name="ARTWORK">
+				<Texture>
+					<Size>
+						<AbsDimension x="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" />
+				</Texture>
+				<Texture>
+					<Size>
+						<AbsDimension x="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" />
+				</Texture>
+				<Texture>
+					<Size>
+						<AbsDimension y="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" />
+				</Texture>
+				<Texture>
+					<Size>
+						<AbsDimension y="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" />
+				</Texture>
+			</Layer>
+			<Layer name="OVERLAY">
+
+			</Layer>
+		</Layers>
+		<Frames>
+			
+		</Frames>
+		
+	</Frame>
+	<Frame name="GuildPanelPopupMenu_Item" virtual="true">
+		<Size>
+			<AbsDimensiony y="16" />
+		</Size>
+		<Layers>
+			<Layer name="ARTWORK">
+				<Texture name="$parentTexture">
+					<Size>
+						<AbsDimension y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.38" g="0.43" b="0.5" a="1.0" />
+				</Texture>
+				
+			</Layer>
+			<Layer name="OVERLAY">
+				<FontString name="$parentText" inherits="GuildPanelFontSmall" text="All Characters" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="4" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				getglobal(self:GetName().."Texture"):SetVertexColor(0.38,0.43,0.5,0.0)
+			</OnLoad>
+			<OnEnter>
+				if self._disabled ~= true then
+					getglobal(self:GetName().."Texture"):SetVertexColor(0.38,0.43,0.5,0.5)
+				end
+			</OnEnter>
+			<OnLeave>
+				getglobal(self:GetName().."Texture"):SetVertexColor(0.38,0.43,0.5,0.0)
+			</OnLeave>
+		</Scripts>
+	</Frame>
+	<Frame name="GuildPanelPopupButton" virtual="true">
+		<Size>
+			<AbsDimension x="45" y="16" />
+		</Size>
+		<!--<Backdrop bgFile="Interface\AddOns\GuildPanel\PopupMenu\filler" tile="false" alphaMode="BLEND">
+			<BackgroundInsets>
+				<AbsInset left="16" right="16" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>-->
+		<Layers>
+			<Layer name="ARTWORK">
+				<Texture name="$parentLeftTexture" file="Interface\AddOns\GuildPanel\PopupMenu\leftEdge">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentLeftTexture" file="Interface\AddOns\GuildPanel\PopupMenu\filler">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="16" />
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="-16" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentRightTexture" file="Interface\AddOns\GuildPanel\PopupMenu\rightEdge">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer name="OVERLAY">
+				<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Item1" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnMouseUp>
+				
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	<Frame name="GuildPanelDataView_SearchCriteria" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="348" y="25" />
+		</Size>
+		<Backdrop bgFile="Interface\Addons\GuildPanel\PopupMenu\menuBG" tile="false" alphaMode="BLEND">
+			<EdgeSize>
+				<AbsValue val="0"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer name="ARTWORK">
+				<FontString name="$parentAndText" inherits="GuildPanelFontSmall" text="AND" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+					<FontHeight>
+						<AbsValue val="15"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="6" y="-9"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.5" g="0.5" b="0.5"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentPredicateFieldSelect" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="80" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="32" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentPredicateConditionSelect" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="80" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="115" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentPredicateValueSelect" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="90" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="198" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<EditBox name="$parentPredicateValueField" multiLine="false" autoFocus="false">
+				<Size>
+					<AbsDimension x="90" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="198" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture>
+							<Size>
+								<AbsDimension x="90" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1.0" g="1.0" b="1.0" />
+						</Texture>
+					</Layer>
+					<Layer name="ARTWORK">
+						<Texture>
+							<Size>
+								<AbsDimension x="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.7" g="0.7" b="0.7" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension x="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.7" g="0.7" b="0.7" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension y="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.7" g="0.7" b="0.7" />
+						</Texture>
+						<Texture>
+							<Size>
+								<AbsDimension y="1" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.7" g="0.7" b="0.7" />
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames />
+				<Scripts>
+					<OnMouseUp>
+						GuildPanel:CloseAllPopupMenus()
+						this:SetFocus(true)
+					</OnMouseUp>
+					<OnEscapePressed>
+						this:ClearFocus();
+					</OnEscapePressed>
+					<OnEnterPressed>
+						this:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+				<FontString inherits="GuildPanelFontSmall"/>
+			</EditBox>
+			<Button name="$parentRemovePredicateButton" inherits="GuildPanelMinusButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-40" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parentAddPredicateButton" inherits="GuildPanelPlusButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-22" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="GuildPanelManageViewHeader" virtual="true">
+		<Size>
+			<AbsDimension x="330" y="32" />
+		</Size>
+		<Backdrop bgFile="Interface\AddOns\GuildPanel\Manage\filler" tile="false" alphaMode="BLEND">
+			<EdgeSize>
+				<AbsValue val="0"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="32" right="32" top="0" bottom="0"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer name="ARTWORK">
+				<Texture name="$parentLeftTexture" file="Interface\AddOns\GuildPanel\Manage\closedLeft">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentRightTexture" file="Interface\AddOns\GuildPanel\Manage\right">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer name="OVERLAY">
+				<FontString name="$parentText" inherits="GuildPanelFontNormal" text="" enableMouse="false" alpha="1.0" justifyV="MIDDLE" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="32" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	
+	
+	
+	
+	<Frame name="GuildPanelManageViewParent" virtual="true">
+		<Size>
+			<AbsDimension x="376" y="346" />
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentScrollBG">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="-36" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="268" />
+				</Size>
+				<Backdrop bgFile="Interface\AddOns\GuildPanel\Scroller\blue-trackmiddle" tile="true">
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="16" bottom="16"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBGTop" file="Interface\AddOns\GuildPanel\Scroller\blue-tracktop" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentBGBottom" file="Interface\AddOns\GuildPanel\Scroller\blue-trackbottom" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<ScrollFrame name="$parentScrollBar" inherits="GuildPanelDataViewScrollBar">
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.1" g="0.1" b="0.1" a="1.0" />
+						</Texture>
+					</Layer>
+				</Layers>
+			</ScrollFrame>
+			<Frame name="$parentLowerFrame" inherits="GuildPanelDataViewLowerFrame">
+				
+			</Frame>
+		</Frames>
+	</Frame>
+	
+	<Frame name="GuildPanelVotingBoothViewParent" virtual="true">
+		<Size>
+			<AbsDimension x="376" y="346" />
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentScrollBG">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="-36" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="268" />
+				</Size>
+				<Backdrop bgFile="Interface\AddOns\GuildPanel\Scroller\blue-trackmiddle" tile="true">
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="16" bottom="16"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBGTop" file="Interface\AddOns\GuildPanel\Scroller\blue-tracktop" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentBGBottom" file="Interface\AddOns\GuildPanel\Scroller\blue-trackbottom" alphaMode="BLEND">
+							<Size>
+								<AbsDimension x="16" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<ScrollFrame name="$parentScrollBar" inherits="GuildPanelDataViewScrollBar">
+				<Layers>
+					<Layer name="ARTWORK">
+						<Texture name="$parentTexture">
+
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.9" g="0.9" b="0.9" a="1.0" />
+						</Texture>
+					</Layer>
+				</Layers>
+			</ScrollFrame>
+			<Frame name="$parentLowerFrame" inherits="GuildPanelDataViewLowerFrame">
+				
+			</Frame>
+		</Frames>
+	</Frame>
+	
+	<Button name="GuildPanelOverlayButton" inherits="UIPanelCloseButton" virtual="true">
+		<Size>
+			<AbsDimension x="90" y="20" />
+		</Size>
+		<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="128" y="32" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="128" y="32" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+			<Size>
+				<AbsDimension x="128" y="32" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+	</Button>
+	<Frame name="GuildPanelManageView_Preferences" virtual="true">
+		<Size>
+			<AbsDimension x="355" y="100" />
+		</Size>
+		<Layers>
+			<Layer name="ARTWORK">
+				<FontString name="$parentHotkeyText" inherits="GuildPanelFontWhite" text="Current Hotkey: none" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-72"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				<Texture>
+					<Size>
+						<AbsDimension x="1" y="38" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="12" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" a="0.7" />
+				</Texture>
+				<Texture>
+					<Size>
+						<AbsDimension x="6" y="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="12" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" a="0.7" />
+				</Texture>
+				<Texture>
+					<Size>
+						<AbsDimension x="6" y="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="12" y="-48" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" a="0.7" />
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parentEmbedModeButton" inherits="GuildPanelRadioButton">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontWhite" text="Embed GuildPanel into the Social (O) frame.">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="2" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == nil then
+							self:SetChecked(true)
+						else
+							getglobal(self:GetParent():GetName().."SoloModeButton"):SetChecked(false)
+							GuildPanel.db.char.activationMode = "EMBED"
+							GuildPanel:SetupActivation()
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentSoloModeButton" inherits="GuildPanelRadioButton">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontWhite" text="Show GuildPanel only with its hotkey.">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="2" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == nil then
+							self:SetChecked(true)
+						else
+							getglobal(self:GetParent():GetName().."EmbedModeButton"):SetChecked(false)
+							GuildPanel.db.char.activationMode = "SOLO"
+							GuildPanel:SetupActivation()
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentSnapToSocial" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="17" y="-51"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontWhite" text="Snap to Social (O) frame. (Embed mode only)">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="1" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildPanel.db.char.snapToSocial = true
+						else
+							GuildPanel.db.char.snapToSocial = false
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parentSetDefaultHotkeyButton" inherits="GuildPanelLongButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-84" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Set Hotkey to Default (Alt-O)" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="200" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						SetBinding("ALT-o", "TOGGLEGUILDPANEL")
+						SaveBindings(2)
+						GuildPanel:DrawDataView()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="GuildPanelManageView_AltMain" virtual="true">
+		<Size>
+			<AbsDimension x="355" y="100" />
+		</Size>
+		<Layers>
+			<Layer name="ARTWORK">
+				<FontString name="$parentInfoText" inherits="GuildPanelFontWhite" text="Right click on a button for more info." enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="65" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				
+			</Layer>
+		</Layers>
+		<Frames>
+			
+			<Button name="$parentImporterButton" inherits="GuildPanelLongButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-30" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Scanner" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						if button == "LeftButton" then
+							GuildPanel:StartImporter()
+						elseif button == "RightButton" then
+							
+							local x,y = GetCursorPosition()
+							x = x/UIParent:GetEffectiveScale();
+							y = y/UIParent:GetEffectiveScale();
+							ppmItems = {
+								{
+									name = "This Wizard scans the guild public notes for alt information.",
+									disabled = true
+								},
+								{
+									name = "-Okay-",
+									func = function ()
+										GuildPanel:ClosePopupMenu("ButtonTooltip")
+									end
+								}
+							}
+							GuildPanel:DrawPopupMenu("ButtonTooltip", x+20, y-(#ppmItems*16), UIParent, "BOTTOMLEFT", 300, ppmItems)
+						end
+					</OnMouseUp>
+					<OnClick>
+						
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentDownloaderButton" inherits="GuildPanelLongButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-50" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Downloader" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						if button == "LeftButton" then
+							GuildPanel:StartDownloader()
+						elseif button == "RightButton" then
+							
+							local x,y = GetCursorPosition()
+							x = x/UIParent:GetEffectiveScale();
+							y = y/UIParent:GetEffectiveScale();
+							ppmItems = {
+								{
+									name = "This Wizard will download the Alts database from another guild member.",
+									disabled = true
+								},
+								{
+									name = "-Okay-",
+									func = function ()
+										GuildPanel:ClosePopupMenu("ButtonTooltip")
+									end
+								}
+							}
+							GuildPanel:DrawPopupMenu("ButtonTooltip", x+20, y-(#ppmItems*16), UIParent, "BOTTOMLEFT", 365, ppmItems)
+						end
+					</OnMouseUp>
+					<OnClick>
+
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentEmptyDBButton" inherits="GuildPanelLongButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Empty DB" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						if button == "LeftButton" then
+							table.wipe(GuildPanel.db.char.alts)
+							table.wipe(GuildPanel.db.char.mains)
+							GuildPanel.db.char.dbTimestamp = 0
+							GuildPanel:DrawDataView()
+						elseif button == "RightButton" then
+							
+							local x,y = GetCursorPosition()
+							x = x/UIParent:GetEffectiveScale();
+							y = y/UIParent:GetEffectiveScale();
+							ppmItems = {
+								{
+									name = "This button will erase all Alt/Main associations in the GuildPanel database.",
+									disabled = true
+								},
+								{
+									name = "There will be no confirmation.",
+									disabled = true
+								},
+								{
+									name = "-Okay-",
+									func = function ()
+										GuildPanel:ClosePopupMenu("ButtonTooltip")
+									end
+								}
+							}
+							GuildPanel:DrawPopupMenu("ButtonTooltip", x+20, y-(#ppmItems*16), UIParent, "BOTTOMLEFT", 370, ppmItems)
+						end
+					</OnMouseUp>
+					<OnClick>
+
+					</OnClick>
+				</Scripts>
+			</Button>
+  
+		
+		</Frames>
+	</Frame>
+	<Frame name="GuildPanelManageView_GuildControlBeta" virtual="true">
+		<Size>
+			<AbsDimension x="355" y="100" />
+		</Size>
+		<Layers>
+			<Layer name="ARTWORK">
+				<FontString name="$parentInfoText" inherits="GuildPanelFontWhite" text="Guild Control features must currently be used with the|nstandard panel." enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+				
+			</Layer>
+		</Layers>
+		<Frames>
+			
+			<Button name="$parentGuildControlButton" inherits="GuildPanelLongButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-40" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Guild Control" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if ( GuildControlPopupFrame:IsShown() ) then
+							GuildControlPopupFrame:SetPoint("TOPLEFT", GuildFrame, "TOPRIGHT", -37, -6)
+							GuildControlPopupAcceptButton:SetScript("OnClick", GuildControlPopupAcceptButton_OnClick)
+							GuildControlPopupFrame:Hide();
+						else
+							GuildControlPopupFrame:SetPoint("TOPLEFT", GuildPanelWindow, "TOPRIGHT", 0, -6)
+							GuildControlPopupAcceptButton:SetScript("OnClick", GuildPanelGuildControlPopupAcceptButton_OnClick)
+							GuildFramePopup_Show(GuildControlPopupFrame);
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<Frame name="GuildPanelManageView_GuildControl" virtual="true">
+		<Size>
+			<AbsDimension x="355" y="100" />
+		</Size>
+		<Layers>
+			<Layer name="ARTWORK">
+				<FontString name="$parentInfoText" inherits="GuildPanelFontWhite" text="Select a Rank to edit:" enableMouse="false" alpha="1.0">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Shadow>
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+						<Color r="0.3" g="0.3" b="0.3"/>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentRankSelect" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="150" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="140" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Button name="$parentEditRankNameButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="285" y="-1" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture />
+				<PushedTexture file="Interface\AddOns\GuildPanel\pencil" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.7" g="0.7" b="0.7" a="0.7" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:ShowPromptToSetRankName(self:GetParent())
+					</OnClick>
+				</Scripts>
+			</Button>
+			<CheckButton name="$parentGChatListenCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Guildchat Listen">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(1, true)
+						else
+							GuildControlSetRankFlag(1, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentOChatListenCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-46"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Officerchat Listen">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(3, true)
+						else
+							GuildControlSetRankFlag(3, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentGChatTalkCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="135" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Guildchat Talk">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(2, true)
+						else
+							GuildControlSetRankFlag(2, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentOChatTalkCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="135" y="-46"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Officerchat Talk">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(4, true)
+						else
+							GuildControlSetRankFlag(4, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentPromoteCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="245" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Promote">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(5, true)
+						else
+							GuildControlSetRankFlag(5, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentDemoteCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="245" y="-46"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Demote">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(6, true)
+						else
+							GuildControlSetRankFlag(6, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentInviteMemberCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-62"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Invite Member">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(7, true)
+						else
+							GuildControlSetRankFlag(7, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentRemoveMemberCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="135" y="-62"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Remove Member">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(8, true)
+						else
+							GuildControlSetRankFlag(8, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentSetMOTDCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="245" y="-62"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Set MOTD">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(9, true)
+						else
+							GuildControlSetRankFlag(9, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentEditPublicNoteCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-78"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Edit Publicnote">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(10, true)
+						else
+							GuildControlSetRankFlag(10, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentEditOfficerNoteCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="135" y="-78"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Edit Officernote">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(12, true)
+						else
+							GuildControlSetRankFlag(12, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentViewOfficerNoteCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="245" y="-78"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="View Officernote">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(11, true)
+						else
+							GuildControlSetRankFlag(11, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentModifyGuildInfoCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="16" y="-94"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Modify Guild Info">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(13, true)
+						else
+							GuildControlSetRankFlag(13, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentCreateGuildEventCheck" inherits="GuildPanelCheckBox">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="135" y="-94"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GuildPanelFontSmallWhite" text="Create Guild Event">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() == 1 then
+							GuildControlSetRankFlag(14, true)
+							GuildControlSetRankFlag(17, true)
+						else
+							GuildControlSetRankFlag(14, false)
+							GuildControlSetRankFlag(17, false)
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+	</Frame>
+	
+	<Frame name="GuildPanelDataViewLowerFrame" virtual="true">
+		<Size>
+			<AbsDimension x="350" y="26" />
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer name="OVERLAY">
+				<Texture name="$parentTexture">
+					<Size>
+						<AbsDimension x="350" y="25" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+		            <Color r="1.0" g="1.0" b="1.0" a="0.7" />
+				</Texture>
+				<Texture name="$parentTexture2">
+					<Size>
+						<AbsDimension x="351" y="1" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="0" y="25" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.38" g="0.43" b="0.5" />
+				</Texture>
+				<Texture name="$parentTexture2">
+					<Size>
+						<AbsDimension x="1" y="326" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="350" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.38" g="0.43" b="0.5" />
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentActionGroupSelect" inherits="GuildPanelPopupButton">
+				<Size>
+					<AbsDimension x="90" y="16" />
+				</Size>
+				<FontHeight>
+					<AbsValue val="15"/>
+				</FontHeight>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnMouseUp>
+						local ppmItems = {
+							{
+								name = "With Selected",
+								func = function () 
+									GuildPanel:SetActionGroup("SELECTED")
+									GuildPanel:ClosePopupMenu("ActionGroupSelect")
+								end
+							},
+							{
+								name = "With Marked",
+								func = function () 
+									GuildPanel:SetActionGroup("MARKED")
+									GuildPanel:ClosePopupMenu("ActionGroupSelect")
+								end
+							}
+						}
+						GuildPanel:DrawPopupMenu("ActionGroupSelect", -10, -1, self, "TOPRIGHT",80, ppmItems)
+					</OnMouseUp>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText("With Selected")
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<Button name="$parentInviteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Size>
+					<AbsDimension x="90" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="100" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="Invite" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.1" g="0.1" b="0.1" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:PerformActionToGroup("INVITE")
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentGKickButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Size>
+					<AbsDimension x="90" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="190" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+						<FontString name="$parentText" inherits="GuildPanelFontSmall" text="GKick" enableMouse="false" alpha="1.0">
+							<Size>
+								<AbsDimension x="128" />
+							</Size>
+							<FontHeight>
+								<AbsValue val="15"/>
+							</FontHeight>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="0.1" g="0.1" b="0.1" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+								<Color r="0.5" g="0.5" b="0.5"/>
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\panelOverlayButton" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\panelOverlayButtonPushed" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:PerformActionToGroup("GKICK")
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentPromoteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="290" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\promote" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\promote" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" a="0.9" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:PerformActionToGroup("PROMOTE")
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentDemoteButton" inherits="UIPanelCloseButton" virtual="false" setAllPoints="true" hidden="false" alpha="1.0"  enableMouse="true">
+				<Size>
+					<AbsDimension x="16" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="320" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer name="BACKGROUND">
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\AddOns\GuildPanel\demote" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<HighlightTexture file="" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</HighlightTexture>
+				<PushedTexture file="Interface\AddOns\GuildPanel\promote" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="16" y="16" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.5" g="0.5" b="0.5" a="0.9" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						GuildPanel:PerformActionToGroup("DEMOTE")
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+		</Frames>
+		<Scripts>
+			<OnMouseUp>
+				GuildPanel:CloseAllPopupMenus()
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	<ScrollFrame name="GuildPanelDataViewScrollBar" virtual="true">
+		<Size>
+			<AbsDimension y="300" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-20" />
+				</Offset>
+			</Anchor>
+			<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="-25" y="-10" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnVerticalScroll>
+				local scrollbar = getglobal(self:GetName().."ScrollBar");
+		        scrollbar:SetValue(offset);
+		        local min;
+		        local max;
+		        
+				GuildPanelDataViewScrollBar_OnVerticalScroll(self)
+			</OnVerticalScroll>
+			<OnScrollRangeChanged>
+				GuildPanelInformationScrollBar_OnScrollRangeChanged(self, arg2, getglobal(self:GetParent():GetName().."ScrollBG"));
+			</OnScrollRangeChanged>
+			<OnMouseWheel>
+				GuildPanelScrollFrame_OnMouseWheel(self, delta);
+			</OnMouseWheel>
+		</Scripts>
+		<Frames>
+			<Slider name="$parentScrollBar">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="-16"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-16" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="0"/>
+				</Size>
+				<Scripts>
+
+					<OnValueChanged>
+						this:GetParent():SetVerticalScroll(arg1);
+					</OnValueChanged>
+				</Scripts>
+				<ThumbTexture name="$parentThumbTexture" file="Interface\Addons\GuildPanel\Scroller\thumb">
+					<Size>
+						<AbsDimension x="16" y="32"/>
+					</Size>
+				</ThumbTexture>
+			</Slider>
+		</Frames>
+		<ScrollChild>
+			<Frame name="$parentTable">
+				<Size>
+					<AbsDimension x="356" y="0" />
+				</Size>
+			</Frame>
+		</ScrollChild>
+	</ScrollFrame>
+	<CheckButton name="GuildPanelCheckBox" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16"/>
+		</Size>
+		<NormalTexture file="Interface\AddOns\GuildPanel\unchecked" alphaMode="BLEND" />
+		<PushedTexture file="Interface\AddOns\GuildPanel\check-pressed" alphaMode="BLEND"/>
+		<HighlightTexture />
+		<CheckedTexture file="Interface\AddOns\GuildPanel\checked" alphaMode="BLEND"/>
+		<DisabledCheckedTexture file="IInterface\AddOns\GuildPanel\check-disabled" alphaMode="BLEND"/>
+	</CheckButton>
+	<CheckButton name="GuildPanelRadioButton" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16"/>
+		</Size>
+		<NormalTexture file="Interface\AddOns\GuildPanel\radio-unchecked" alphaMode="BLEND" />
+		<PushedTexture file="Interface\AddOns\GuildPanel\radio-pressed" alphaMode="BLEND"/>
+		<HighlightTexture />
+		<CheckedTexture file="Interface\AddOns\GuildPanel\radio-checked" alphaMode="BLEND"/>
+		<DisabledCheckedTexture file="IInterface\AddOns\GuildPanel\check-disabled" alphaMode="BLEND"/>
+	</CheckButton>
+</Ui>

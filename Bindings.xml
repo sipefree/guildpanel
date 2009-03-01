@@ -1,0 +1,5 @@
+<Bindings>
+  <Binding name="TOGGLEGUILDPANEL" header="GUILDPANEL">
+	GuildPanel:ToggleWindow()
+  </Binding>
+</Bindings>
